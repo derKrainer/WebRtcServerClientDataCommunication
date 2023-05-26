@@ -1,0 +1,28 @@
+{
+  "name": "webrtcmessagebroker",
+  "version": "1.0.0",
+  "description": "Allow a webRtc server to send messages to multiple clients",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode development",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derKrainer/WebRtcMessageBroker.git"
+  },
+  "author": "Kenny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derKrainer/WebRtcMessageBroker/issues"
+  },
+  "homepage": "https://github.com/derKrainer/WebRtcMessageBroker#readme",
+  "dependencies": {
+    "peerjs": "^1.4.7"
+  },
+  "devDependencies": {
+    "@types/peerjs": "1.1.0",
+    "ts-loader": "9.4.3",
+    "webpack-cli": "5.1.1"
+  }
+}
