@@ -39,3 +39,8 @@ server.send({ timestamp: Date.now(), message: 'Hello there' });
 server.send('General Kenobi')
 server.send(1337);
 ```
+
+## Example
+
+ServerClient.html is a test page where the first one opening it becomes the server and can share his URL
+to any number of clients and then send messages to all ofd them.
