@@ -248,18 +248,20 @@ window.addEventListener('load', () => {
             target.style.justifyContent = 'space-evenly';
             container.insertBefore(target, container.children[1]);
             messages.forEach(msg => {
-                const timestampContainer = document.createElement('div');
-                timestampContainer.innerText = String(msg);
-                target.appendChild(timestampContainer);
+                const logCell = document.createElement('div');
+                logCell.innerText = msg;
+                logCell.style.textAlign = 'center';
+                target.appendChild(logCell);
             });
             return target;
         }
         function createLog(message) {
             console.log('Received message from server', message);
-            createLogContainer([String(message.timestamp), message.message]);
+            const age = Date.now() - message.timestamp;
+            createLogContainer([String(message.timestamp), message.message, String(age)]);
         }
         const serverPeerId = getPeerIdFromQueryParams();
-        createLogContainer(['Timestamp', 'Message']);
+        createLogContainer(['Timestamp', 'Message', 'Message delivery time']);
         const client = new _WebRtcClient__WEBPACK_IMPORTED_MODULE_0__.WebRtcClient(createLog, () => { client.connect(serverPeerId); });
         window.client = client;
     }

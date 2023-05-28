@@ -65,9 +65,9 @@ window.addEventListener('load', () => {
       container.insertBefore(target, container.children[1]);
 
       messages.forEach(msg => {
-        const timestampContainer = document.createElement('div');
-        timestampContainer.innerText = String(msg);
-        target.appendChild(timestampContainer);
+        const logCell = document.createElement('div');
+        logCell.innerText = msg;
+        target.appendChild(logCell);
       })
 
       return target;
@@ -76,10 +76,11 @@ window.addEventListener('load', () => {
     function createLog(message: ServerMessage) {
       console.log('Received message from server', message);
 
-      createLogContainer([String(message.timestamp), message.message]);
+      const age = Date.now() - message.timestamp;
+      createLogContainer([String(message.timestamp), message.message, String(age)]);
     }
     const serverPeerId = getPeerIdFromQueryParams();
-    createLogContainer(['Timestamp', 'Message']);
+    createLogContainer(['Timestamp', 'Message', 'Message delivery time']);
 
     const client = new WebRtcClient(createLog, () => { client.connect(serverPeerId) });
     (window as any).client = client;
