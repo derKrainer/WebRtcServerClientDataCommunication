@@ -8,7 +8,7 @@ export class WebRtcClient {
   private peer: Peer;
   private lastTargetPeerId: string;
 
-  constructor(private onMessage: (data: unknown) => void) {
+  constructor(private onMessage: (data: unknown) => void, private onPeerOpen = (peerId: string) => { }) {
     this.peer = new Peer({ debug: 2 });
     this.initPeer();
   }
@@ -18,9 +18,10 @@ export class WebRtcClient {
       // Workaround for peer.reconnect deleting previous id
       if (this.peer.id === null) {
         console.log('Received null id from peer open');
+      } else {
+        console.log('ID: ' + this.peer.id);
       }
-
-      console.log('ID: ' + this.peer.id);
+      this.onPeerOpen(this.peer.id);
     });
     this.peer.on('connection', (c) => {
       // Disallow incoming connections

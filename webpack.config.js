@@ -10,6 +10,7 @@ module.exports = () => {
     entry: {
       server: './src/server.ts',
       client: './src/client.ts',
+      clientServer: './src/serverClient.ts',
     },
     target: 'web',
     devtool: 'source-map',

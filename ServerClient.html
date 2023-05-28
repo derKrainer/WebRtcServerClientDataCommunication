@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Server client example</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
+  <script src="/dist/clientServer.js"></script>
+</head>
+<body>
+
+  <div id="serverPart">
+    You are the Server. Copy the URL to invite clients.
+
+    <input id="message" style="font-size: 1.5em;">
+    <input id="sendButton" type="button" value="Send">
+
+  </div>
+  <div id="clientPart">
+    You are the client, you will get notified when the server sends messages.
+
+    <div id="logContainer">
+
+    </div>
+  </div>
+  
+</body>
+</html>

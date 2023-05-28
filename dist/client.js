@@ -13,8 +13,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   WebRtcClient: () => (/* binding */ WebRtcClient)
 /* harmony export */ });
 class WebRtcClient {
-    constructor(onMessage) {
+    constructor(onMessage, onPeerOpen = (peerId) => { }) {
         this.onMessage = onMessage;
+        this.onPeerOpen = onPeerOpen;
         this.peer = new Peer({ debug: 2 });
         this.initPeer();
     }
@@ -24,7 +25,10 @@ class WebRtcClient {
             if (this.peer.id === null) {
                 console.log('Received null id from peer open');
             }
-            console.log('ID: ' + this.peer.id);
+            else {
+                console.log('ID: ' + this.peer.id);
+            }
+            this.onPeerOpen(this.peer.id);
         });
         this.peer.on('connection', (c) => {
             // Disallow incoming connections
